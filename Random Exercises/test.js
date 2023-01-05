@@ -1,13 +1,23 @@
-// prime 2nd way
- 
-for(let i = 2; i <= 30; i++) {
-	let count = 1;
-  for(let j = 2; j <= i; j++) {
-  	if(i%j == 0) {
-    	count = count + 1;
+// 
+
+function permute(str, l, r) {
+  if (l == r) console.log(str);
+  else {
+    for (let i = 0; i <= r; i++) {
+      str = swap(str, l, i);
+      permute(str, l + 1, r);
+      str = swap(str, l, i);
     }
   }
-  if(count == 2) {
-  	console.log(i);
-  }
 }
+function swap(a, i, j) {
+  let temp;
+  let charArray = a.split("");
+  temp = charArray[i];
+  charArray[i] = charArray[j];
+  charArray[j] = temp;
+  return charArray.join("");
+}
+let str = "ABC";
+let n = str.length;
+permute(str, 0, n-1);

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate a Random Number</title>
+    <link href="./random.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h2>Generate Random Number</h2>
+    <h3>Enter The Minimum Number:</h3>
+    <input type="number" id="minimum" /><br />
+    <h3>Enter The Maximum Number:</h3>
+    <input type="number" id="maximum" /><br />
+    <!-- <h3>
+      Enter the numbers you don't want to be included in the generated random
+      numbers (seperated by commas):
+    </h3>
+    <input type="text" id="excluded" /><br /><br /> -->
+
+    <label for="series"><h3>Select the series</h3></label>
+    <select name="series" id="series">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option></select
+    ><br /><br />
+
+    <button type="button" id="btn" onclick="generate()">
+      Generate A Random Number
+    </button>
+    <h4><div id="randomNumber"></div></h4>
+    <h4><div id="answers"></div></h4>
+
+    <script>
+      function generate() {
+        var min = document.getElementById("minimum").value;
+        var min = +min; //converting string to number
+        var max = document.getElementById("maximum").value;
+        var max = +max; //converting string to number
+        // var excludedStrings = document.getElementById("excluded").value; //string
+        var series = document.getElementById("series").value;
+
+        let arrayOfExcludedNumbers = [];
+
+        if (series == 1) {
+          arrayOfExcludedNumbers = [1, 2, 3, 4, 5, 6, 8];
+        }
+        if (series == 2) {
+          arrayOfExcludedNumbers = [1, 2, 3, 4, 5, 6];
+        }
+        if (series == 3) {
+          arrayOfExcludedNumbers = [1, 2, 3, 4, 5, 6];
+        }
+        if (series == 4) {
+          arrayOfExcludedNumbers = [1, 2, 3, 4, 5];
+        }
+        if (series == 5) {
+          arrayOfExcludedNumbers = [1, 2, 3, 4];
+        }
+        if (series == 6) {
+          arrayOfExcludedNumbers = [1, 2, 3, 5, 6, 7, 8];
+        }
+        if (series == 7) {
+          arrayOfExcludedNumbers = [1, 2];
+        }
+        if (series == 8) {
+          arrayOfExcludedNumbers = [1];
+        }
+        if (series == 9) {
+          arrayOfExcludedNumbers = [];
+        }
+
+        // console.log(excludedNumbers);
+        // console.log(typeof excludedNumbers);
+
+        // var arrayOfExcludedStrings = excludedStrings.split(","); //Array of strings
+        //console.log(arrayOfExcludedStrings);
+        //console.log(typeof arrayOfExcludedStrings);
+
+        //using map function to covert all teh strings in the array to numbers
+
+        // var arrayOfExcludedNumbers = arrayOfExcludedStrings.map((item) => {
+        //   return parseInt(item);
+        // });
+        // //console.log(arrayOfExcludedNumbers);
+        let arr = [];
+
+        for (let i = 0; i < 50; i++) {
+          var randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+          //final condition
+          if (!arrayOfExcludedNumbers.includes(randomNum % 10)) {
+            arr.push(randomNum);
+          } else i--;
+        }
+
+        function makeTableHTML(arr) {
+          var result = "<div id='1'>";
+          result += "<table border=1 class='table'>";
+          let flag = 0;
+          let serialNumber = 0;
+
+          for (let k = 0; k < 5; k++) {
+            result += "<tr class='tr'>";
+
+            for (var i = 0; i < 10; i++) {
+              result +=
+                "<td class='td1'>" + parseInt(serialNumber + 1) + "</td>";
+              serialNumber++;
+            }
+            result += "</tr>";
+
+            result += "<tr class='tr'>";
+
+            for (var i = 0; i < 10; i++) {
+              result += "<td class='td'>" + arr[flag] + "</td>";
+              flag = flag + 1;
+            }
+            result += "</tr>";
+            result += "<tr class='tr'>";
+            for (var i = 0; i < 10; i++) {
+              result += "<td class='td'>" + series + "</td>";
+            }
+            result += "</tr>";
+            result += "<tr class='tr'>";
+            for (var i = 0; i < 10; i++) {
+              result += "<td class='td'>" + "  " + "</td>";
+            }
+            result += "</tr>";
+          }
+          result += "</table></div><br>";
+
+          return result;
+        }
+
+        document.getElementById("randomNumber").innerHTML = makeTableHTML(arr);
+
+        let ansarr = arr.map((item) => {
+          return parseInt(item) + parseInt(series);
+        });
+
+        console.log(ansarr);
+
+        let printarr = ansarr.map((item, idx) => {
+          return ` Q ${idx + 1}. = ${item} `;
+        });
+
+        document.getElementById("answers").innerHTML = printarr;
+      }
+    </script>
+  </body>
+</html>

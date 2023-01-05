@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+ 
+    <title>Survey Form App</title>
+ 
+</head>
+ 
+<body>
+ 
+    <center>
+        <h2>Survey Form App</h2>
+       
+           <form method="get">
+ 
+            <!--Name input box-->
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" name="name">
+   
+            <!--Gender radio button-->
+            <br><br>
+            <label for="gender">Gender:</label>
+ 
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+ 
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="male">Female</label>
+ 
+            <!--Age dropdown-->
+            <br><br>
+            <label for="age">Age:</label>
+            <select id="age" name="age">
+                <option value="Under 10">Under 10 years</option>
+                <option value="Between 10 to 25">Between 10 to 25 years</option>
+                <option value="Between 25 to 60">Between 25 to 60 years</option>
+                <option value="Above 60">Above 60 years</option>
+            </select>
+ 
+            <!--Countries visited checkbox-->
+            <br><br>
+            <label for="countriesVisited">Select the countries you have visited:</label>
+ 
+            <input type="checkbox" id="swis" name="countriesVisited" value="Switzerland">
+            <label for="swis">Switzerland</label>
+ 
+            <input type="checkbox" id="in" name="countriesVisited" value="India">
+            <label for="in">India</label>
+ 
+            <input type="checkbox" id="jp" name="countriesVisited" value="Japan">
+            <label for="jp">Japan</label>
+   
+            <!--Feedback text area-->
+            <br><br>
+            <label for="fb">Please enter your feedback:</label>
+            <textarea id="fb" name="feedback" rows="4" cols="50"></textarea>
+ 
+            <!--Submit button-->
+            <br><br>
+            <input type="submit" value="Submit" onclick="displayData()">
+   
+        </form>
+       
+    </center>
+ 
+    <script>
+ 
+        function displayData(){
+            var name = "Not specified"
+            var gender = "Not specified"
+            var age = "Not specified"
+            var countriesVisited = "Not specified"
+            var feedback = "Not specified"
+ 
+            if(document.getElementById("name").value != null && document.getElementById("name").value != ""){
+                name = document.getElementById("name").value;
+            }
+ 
+            if(document.getElementById("male").checked || document.getElementById("female").checked){
+                gender = document.getElementById("male").checked ? document.getElementById("male").value : document.getElementById("female").value
+            }
+ 
+            if(document.getElementById("age").value){
+                age = document.getElementById("age").value
+            }
+ 
+            var output = `Name is ${name}, Gender is ${gender}, Age is ${age}`;
+ 
+            alert(output)
+        }
+ 
+    </script>
+   
+ 
+</body>

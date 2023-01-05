@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>survey form</title>
+  </head>
+  <body>
+    <center>
+      <form method>
+        <h1>Survey Form App</h1>
+        <label for="name">Name:</label>
+        <input type="name" id="name">
+
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+        <br><br>
+
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email">
+        <br><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male:</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female:</label>
+        <br><br>
+
+        <label for="age">Age:</label>
+        <select>
+          <option value="select your age">Select your age</option>
+          <option value="under 15">under 15 years</option>
+          <option value="betwen 15 to 25">betwen 15 to 25</option>
+          <option value="betwen 25 to 40">betwen 25 to 40</option>
+        </select>
+
+        <br><br>
+        <label for="cuntries">select the Cuntries you have visited :</label>
+        <input type="checkbox" id="japan" name="japan" value="japan">
+        <label for="japan">Japan</label>
+        <input type="checkbox" id="india" name="india" value="india">
+        <label for="india">India</label>
+        <input type="checkbox" id="nepal" name="nepal" value="nepal">
+        <label for="nepal">Nepal</label>
+        <br><br>
+        <label for="feedback">Please enter your feedback:</label>
+        <textarea id="feedback" name="feedbac" rows="5" cols="50"></textarea>
+        <br><br>
+        <input type= "button" id = "submit" value="submit" onclick = "displayelements()">
+      </form>
+    </center>
+    <script>
+      function displayelements(){
+        var name = "not specified";
+        var age = "not specified";
+        var email = "not specified";
+        var passord = "not specified";
+        var gender = "not specified";
+        var countries = "not specified";
+        var feedback = "not specified";
+        if (document.getElementById("name").value != null && document.getElementById("name").value != "") {
+          name = document.getElementById("name").value;
+        }
+        if (document.getElementById("password").value != null && document.getElementById("password").value != "") {
+          passord = document.getElementById("password").value;
+        }
+        
+        if (document.getElementById("email").value != null && document.getElementById("email").value != "") {
+          email = document.getElementById("email").value;
+        }
+        if (document.getElementById("male").checked || document.getElementById("female").checked) {
+          gender = document.getElementById("male").checked ? document.getElementById("male").value : document.getElementById("female").value;
+        }
+       
+        var display1 = `Name is ${name}, Gender is ${gender}, email is ${email}`;
+
+        alert(display1);
+      }
+    </script>
+  </body>
+</html>

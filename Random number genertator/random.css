@@ -1,0 +1,35 @@
+.tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-top: 100;
+  margin-top: 100;
+}
+
+.td {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: x-large;
+  width: 70px;
+  height: 30px;
+}
+
+.td1 {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: small;
+  width: 70px;
+  height: 30px;
+}
+
+#randomNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
